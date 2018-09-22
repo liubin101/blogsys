@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lb.mapper.custom.ArtCommentMapperCustom">
+    <select id="findCommentsByArtId"  parameterType="Long" resultType="com.lb.entity.custom.ArtCommentCustom">
+     select * from art_comment  where artid=#{artId} order by createtime desc
+ </select>
+
+
+
+</mapper>

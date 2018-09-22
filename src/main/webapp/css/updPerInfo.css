@@ -1,0 +1,30 @@
+.midbody input{
+	width: 200px;
+	height: 30px;
+}
+.midbody .sex{
+	width: 20px;
+	height: 13px;
+}
+.midbody ul{
+	margin-top: 50px;
+}
+.midbody li{
+	line-height: 50px;
+}
+.midbody li span{
+	display: inline-block;
+	width: 80px;
+	height: 20px;
+	text-align: right;
+}
+.btn_changeinfo{
+	width: 100px;
+	height: 40px;
+	background: #BFAB86;
+	border: 0;
+	margin-top: 20px;
+	margin-left: 82px;
+	font-size: 16px;
+	color: white;
+}

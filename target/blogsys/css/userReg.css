@@ -1,0 +1,53 @@
+body{
+	width: 100%;
+	background: url(/img/regBG.jpg) no-repeat;
+	background-size: cover;
+
+}
+.midbody{
+	width: 400px;
+	height: 450px;
+	background: #f7f4e3;
+	margin:0 auto;
+	margin-top: 50px;
+	padding: 20px;
+}
+.midbody p{
+	font-size: 30px;
+    color: #333;
+    line-height: 18px;
+    text-align: center;
+    margin-top: 20px;
+}
+.midbody input{
+	width: 200px;
+	height: 30px;
+}
+.midbody ul{
+	margin-top: 50px;
+}
+.midbody li{
+	line-height: 50px;
+}
+.midbody li span{
+	display: inline-block;
+	width: 80px;
+	height: 20px;
+	text-align: right;
+}
+.btn_reg{
+	width: 100px;
+	height: 40px;
+	background: #BFAB86;
+	border: 0;
+	margin-top: 20px;
+	margin-left: 82px;
+	font-size: 16px;
+	color: white;
+}
+.midbody a{
+	color:#666;
+}
+.midbody a:hover{
+	text-decoration: underline;
+}

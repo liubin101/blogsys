@@ -1,0 +1,31 @@
+.midbody{
+	text-align: center;
+}
+.midbody .art_title{
+    width: 600px;
+    height: 60px;
+    margin-top: 30px
+}
+.midbody select{
+	width: 200px;
+	height: 30px;
+    margin-top: 30px;
+}
+.midbody .con_editor{
+    width: 800px;
+    margin:30px auto;
+}
+.midbody .art_submit{
+	width: 200px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	background: #BFAB86;
+	border-radius: 5px;
+	font-size: 20px;
+	color: white;
+	float: right;
+	cursor: pointer;
+	margin-top: 10px;
+	margin-right: 400px;
+}

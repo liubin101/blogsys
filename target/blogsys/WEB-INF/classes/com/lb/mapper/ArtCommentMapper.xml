@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lb.mapper.ArtCommentMapper">
+  <resultMap id="BaseResultMap" type="com.lb.entity.ArtComment">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="USERID" jdbcType="DECIMAL" property="userid" />
+    <result column="ARTID" jdbcType="DECIMAL" property="artid" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="CCONTENT" jdbcType="VARCHAR" property="ccontent" />
+    <result column="LIKENUM" jdbcType="DECIMAL" property="likenum" />
+    <result column="DISLIKENUM" jdbcType="DECIMAL" property="dislikenum" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, USERID, ARTID, CREATETIME, CCONTENT, LIKENUM, DISLIKENUM
+  </sql>
+  <select id="selectByExample" parameterType="com.lb.entity.ArtCommentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ART_COMMENT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ART_COMMENT
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ART_COMMENT
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lb.entity.ArtCommentExample">
+    delete from ART_COMMENT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lb.entity.ArtComment">
+    insert into ART_COMMENT (ID, USERID, ARTID, 
+      CREATETIME, CCONTENT, LIKENUM, 
+      DISLIKENUM)
+    values (#{id,jdbcType=DECIMAL}, #{userid,jdbcType=DECIMAL}, #{artid,jdbcType=DECIMAL}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{ccontent,jdbcType=VARCHAR}, #{likenum,jdbcType=DECIMAL}, 
+      #{dislikenum,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lb.entity.ArtComment">
+    insert into ART_COMMENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="artid != null">
+        ARTID,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="ccontent != null">
+        CCONTENT,
+      </if>
+      <if test="likenum != null">
+        LIKENUM,
+      </if>
+      <if test="dislikenum != null">
+        DISLIKENUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=DECIMAL},
+      </if>
+      <if test="artid != null">
+        #{artid,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ccontent != null">
+        #{ccontent,jdbcType=VARCHAR},
+      </if>
+      <if test="likenum != null">
+        #{likenum,jdbcType=DECIMAL},
+      </if>
+      <if test="dislikenum != null">
+        #{dislikenum,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lb.entity.ArtCommentExample" resultType="java.lang.Long">
+    select count(*) from ART_COMMENT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ART_COMMENT
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userid != null">
+        USERID = #{record.userid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.artid != null">
+        ARTID = #{record.artid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createtime != null">
+        CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ccontent != null">
+        CCONTENT = #{record.ccontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.likenum != null">
+        LIKENUM = #{record.likenum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dislikenum != null">
+        DISLIKENUM = #{record.dislikenum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ART_COMMENT
+    set ID = #{record.id,jdbcType=DECIMAL},
+      USERID = #{record.userid,jdbcType=DECIMAL},
+      ARTID = #{record.artid,jdbcType=DECIMAL},
+      CREATETIME = #{record.createtime,jdbcType=TIMESTAMP},
+      CCONTENT = #{record.ccontent,jdbcType=VARCHAR},
+      LIKENUM = #{record.likenum,jdbcType=DECIMAL},
+      DISLIKENUM = #{record.dislikenum,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lb.entity.ArtComment">
+    update ART_COMMENT
+    <set>
+      <if test="userid != null">
+        USERID = #{userid,jdbcType=DECIMAL},
+      </if>
+      <if test="artid != null">
+        ARTID = #{artid,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ccontent != null">
+        CCONTENT = #{ccontent,jdbcType=VARCHAR},
+      </if>
+      <if test="likenum != null">
+        LIKENUM = #{likenum,jdbcType=DECIMAL},
+      </if>
+      <if test="dislikenum != null">
+        DISLIKENUM = #{dislikenum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lb.entity.ArtComment">
+    update ART_COMMENT
+    set USERID = #{userid,jdbcType=DECIMAL},
+      ARTID = #{artid,jdbcType=DECIMAL},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      CCONTENT = #{ccontent,jdbcType=VARCHAR},
+      LIKENUM = #{likenum,jdbcType=DECIMAL},
+      DISLIKENUM = #{dislikenum,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

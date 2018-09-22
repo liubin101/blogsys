@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lb.mapper.custom.ArticleMapperCustom">
+ <select id="findAllArticles"  resultType="com.lb.entity.custom.ArticleCustom">
+     select * from article order by createtime desc
+ </select>
+
+    <select id="findAllArticlesByClass" parameterType="String" resultType="com.lb.entity.custom.ArticleCustom">
+     select * from article where artclass=#{artclass} order by createtime desc
+ </select>
+
+    <select id="searchAllArticlesByTitle" parameterType="String" resultType="com.lb.entity.custom.ArticleCustom">
+     select * from article where title like '%${_parameter}%' order by createtime desc
+ </select>
+
+    <update id="updateLooknumById" parameterType="Map">
+        update article set looknum=#{looknum} where id=#{id}
+    </update>
+
+    <update id="updateCommentsnumById" parameterType="Map">
+        update article set commentsnum=#{commentsnum} where id=#{id}
+    </update>
+
+</mapper>
